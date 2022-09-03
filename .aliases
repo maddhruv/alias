@@ -1,0 +1,73 @@
+## GIT
+# Add all files
+alias gaa="git add --all"
+# Commit with message
+alias gcmsg='git commit -m'
+# List all branches
+alias gb='git branch'
+# Delete Branch
+alias gbd='git branch -d'
+# Create new branch
+alias gcb='git checkout -b'
+# Cherry Pick
+alias gcp='git cherry-pick'
+# Commit ammend
+alias gca='git commit -v -a'
+# Diff
+alias gd='git diff'
+# pull
+alias ggpull='git pull origin "$(git_current_branch)"'
+# push
+alias ggp='git push origin "$(git_current_branch)"'
+# pull rebase
+alias gpr="git pull --rebase"
+# Status
+alias gst='git status'
+# Clean everything
+alias gcc="git checkout -- . && git clean -fd"
+# Reset
+alias gr="git reset *"
+# Clone and cd
+function gccd () { 
+  git clone "$1" && cd "$(basename $1 .git)";
+}
+
+# npm
+## clean node_module
+alias rmnm="rmd node_modules"
+## new node package
+function nnew () {
+  mkcd $1 && git init && npm init --yes && npx gitignore node;
+}
+## install
+alias ni="npm install"
+## add dependency
+alias nid="npm install"
+## add dev dependency
+alias nidd="npm install -D"
+## add global dependency
+alias nig="npm install -g"
+## start
+alias ns="npmR start"
+## dev
+alias nd="npmR dev"
+## build
+alias nb="npmR build"
+## test
+alias nt="npmR test"
+# Run npm scripts
+alias npmR="npm run"
+
+# Zsh
+## open rc
+alias zshrc='${=EDITOR} ${ZDOTDIR:-$HOME}/.zshrc'
+
+# Common
+## mkdir and cd into it
+function mkcd () {
+  mkdir -p -- "$1" && cd -P -- "$1";
+}
+## list
+alias ll="ll -a"
+## rmdir even if not empty
+alias rmd="rm -rf"
